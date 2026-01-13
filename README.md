@@ -30,7 +30,6 @@ Create an instance of the FreeViewProvider class in your game's entry point. Add
     ```
 You can alse create mapping for views and viewmodels inheriting BaseViewsTemplateSelector class:
 
-    ```csharp
     public class SampleViewsTemplateSelector : BaseViewsTemplateSelector
     {
         public override Dictionary<Type, Type> ViewMapping => new()
@@ -38,18 +37,15 @@ You can alse create mapping for views and viewmodels inheriting BaseViewsTemplat
             { typeof(PlaygroundViewModel), typeof(PlaygroundView) }
         };
     }
-    ```
 
 2. **Show and Hide Views**
 
 Call the Show and Hide methods of the FreeView instance to display or remove views.
 
-    ```csharp
     private void Start()
     {
         FreeViewProvider.Show<PlaygroundViewModel>();
     }
-    ```
 
 3. **Create a View Prefab**
 
@@ -69,15 +65,10 @@ Create classes that inherits from BaseView for your view and BaseViewModel to cr
 
 Override the OnViewAwake method to locate UI components using the GetElementComponent<T> method:
 
-    ```csharp
     private Button _toggleDoorButton;
     private Image _doorStateImage;
     private Text _doorStateText;
     private ProgressBarComponent _doorCounterProgressBar;
-
-    //...
-    //...
-    //...
 
     private bool _isDoorOpened;
 
@@ -106,13 +97,11 @@ Override the OnViewAwake method to locate UI components using the GetElementComp
         _doorStateText.text = "Door is " + (IsDoorOpened ? "opened" : "closed");
         _doorStateImage.color = IsDoorOpened ? CustomColors.Green : CustomColors.Red;
     }
-    ```
 
 6. **Data Binding**
 
 Use the OnViewStart method to bind data between the view and view model:
 
-    ```csharp
     protected override void OnViewStart()
     {
         base.OnViewStart();
@@ -123,12 +112,10 @@ Use the OnViewStart method to bind data between the view and view model:
         set.Bind(_doorCounterProgressBar).For(v => v.MaxValue).To(vm => vm.TargetDoorOpens);
         set.Apply();
     }
-    ```
 7. **Custom components**
 
 Use BaseViewComponent class to create custom controls
 
-    ```csharp
     public class ProgressBarComponent : BaseViewComponent
     {
         private int _currentValue;
@@ -137,7 +124,6 @@ Use BaseViewComponent class to create custom controls
         [SerializeField] private Slider slider;
         //...
     }
-    ```
 
 ## Contributing
 
