@@ -16,7 +16,6 @@ Install the unitypackage file manually.
 
 Create an instance of the FreeViewProvider class in your game's entry point. Add dictionary that describes mapping for view and viewmodels.
 
-    ```csharp
     public class SceneContext : MonoBehaviour
     {
         private void Awake()
@@ -27,7 +26,7 @@ Create an instance of the FreeViewProvider class in your game's entry point. Add
             });
         }
     }
-    ```
+
 You can alse create mapping for views and viewmodels inheriting BaseViewsTemplateSelector class:
 
     public class SampleViewsTemplateSelector : BaseViewsTemplateSelector
